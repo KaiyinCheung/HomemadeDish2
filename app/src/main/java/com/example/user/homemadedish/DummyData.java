@@ -15,11 +15,13 @@ public class DummyData {
     }
 
     public static List<Event> getList() {
-        Event event = new Event();
         List<Event> list = new ArrayList<>();
-        list.add(event);
-        Event event1 = new Event();
-        list.add(event1);
+        for (int i = 1; i <= 15; i++) {
+            Event event = new Event();
+            event.setTitle("Event Name "+ i);
+            list.add(event);
+        }
+
         return list;
     }
 }
