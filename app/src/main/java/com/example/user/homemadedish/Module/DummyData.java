@@ -1,4 +1,4 @@
-package com.example.user.homemadedish;
+package com.example.user.homemadedish.Module;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +15,15 @@ public class DummyData {
     }
 
     public static List<Event> getList() {
-        List<Event> list = new ArrayList<>();
-        for (int i = 1; i <= 15; i++) {
-            Event event = new Event();
-            event.setTitle("Event Name "+ i);
-            list.add(event);
+        if (list == null) {
+            list = new ArrayList<>();
+            for (int i = 1; i <= 15; i++) {
+                Event event = new Event();
+                event.setTitle("Event Name "+ i);
+                list.add(event);
+            }
         }
+
 
         return list;
     }

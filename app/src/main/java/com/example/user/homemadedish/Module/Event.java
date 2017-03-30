@@ -1,4 +1,6 @@
-package com.example.user.homemadedish;
+package com.example.user.homemadedish.Module;
+
+import com.example.user.homemadedish.R;
 
 /**
  * Created by User on 30/3/2017.
@@ -9,9 +11,9 @@ public class Event {
     private int fee, photo, expectedParticipant;
 
     public Event() {
-        this.venue = "venue";
+        this.venue = "Hall II Common Room 1";
         this.title = "title";
-        this.time = "time";
+        this.time = "6:00p.m.";
         this.fee = 100;
         this.photo = R.mipmap.ic_launcher;
         this.expectedParticipant = 50;

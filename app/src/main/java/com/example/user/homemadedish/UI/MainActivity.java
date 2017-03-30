@@ -1,5 +1,6 @@
-package com.example.user.homemadedish;
+package com.example.user.homemadedish.UI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,7 +12,12 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.user.homemadedish.Module.DummyData;
+import com.example.user.homemadedish.Module.Event;
+import com.example.user.homemadedish.R;
+import com.example.user.homemadedish.Adapter.RecyclerViewAdapter;
+
+public class MainActivity extends AppCompatActivity implements RecyclerViewAdapter.ItemClickCallBack {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(DummyData.getList(), this);
         recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerViewAdapter.setItemClickCallBack(this);
     }
 
     @Override
@@ -55,5 +62,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Event event = DummyData.getList().get(position);
+        Intent intent = new Intent(this, EventDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("TITLE", event.getTitle());
+        bundle.putString("VENUE", event.getVenue());
+        bundle.putString("TIME", event.getTime());
+        intent.putExtra("EXTRA", bundle);
+        startActivity(intent);
+
+
     }
 }
